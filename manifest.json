@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "网页智能整理",
+  "version": "1.0.0",
+  "description": "一键读取书签和标签页，自动分类、自动分组着色；不删除、不修改任何书签。",
+  "permissions": ["bookmarks", "tabs", "tabGroups", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "网页智能整理"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

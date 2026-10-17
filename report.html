@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>书签分类报告</title>
+<style>
+  body { font-family: "Microsoft YaHei", sans-serif; margin: 24px; color: #222; }
+  h1 { font-size: 22px; }
+  .bar { margin: 12px 0; }
+  button {
+    background: #0b57d0; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 14px; cursor: pointer;
+  }
+  table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+  th, td { border: 1px solid #d0d7de; padding: 6px 10px; font-size: 13px;
+           text-align: left; vertical-align: top; }
+  th { background: #f6f8fa; }
+  .mono { font-family: Consolas, monospace; font-size: 12px; word-break: break-all; }
+  .risk { display: inline-block; margin: 1px 2px; padding: 1px 8px;
+          border-radius: 10px; color: #fff; font-size: 12px; }
+  .risk-adult { background: #b3261e; }
+  .risk-copyright_risk { background: #f9ab00; color: #222; }
+  .tag { display: inline-block; margin: 1px 2px; padding: 1px 8px;
+         border-radius: 10px; background: #ddf4ff; color: #0969da; font-size: 12px; }
+  .summary { font-size: 13px; color: #555; margin: 8px 0; }
+</style>
+</head>
+<body>
+<h1>书签分类报告</h1>
+<div class="summary" id="summary"></div>
+<div class="bar">
+  <button id="btn-download">下载 HTML 报告</button>
+</div>
+<div id="stats"></div>
+<table id="report-table">
+  <thead>
+    <tr><th>原始位置</th><th>标题</th><th>网址</th><th>内容分类</th>
+        <th>页面类型</th><th>风险</th><th>重复</th><th>判断依据</th></tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script src="report.js"></script>
+</body>
+</html>

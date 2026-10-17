@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>网页智能整理</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <h1>网页智能整理</h1>
+  <div class="tabs">
+    <button id="tab-bookmarks" class="tab-btn active">书签分析</button>
+    <button id="tab-tabs" class="tab-btn">标签页整理</button>
+  </div>
+</header>
+
+<main>
+  <!-- 书签视图 -->
+  <section id="view-bookmarks" class="view active">
+    <div id="bm-summary" class="summary"></div>
+    <div id="bm-detail" class="detail"></div>
+    <div class="actions">
+      <button id="btn-organize" class="btn primary">一键整理书签</button>
+      <button id="btn-report" class="btn">生成分类报告</button>
+      <button id="btn-clean-dup" class="btn warn">清理重复书签</button>
+      <button id="btn-reload-bm" class="btn">重新分析</button>
+    </div>
+  </section>
+
+  <!-- 标签页视图 -->
+  <section id="view-tabs" class="view">
+    <div id="tab-summary" class="summary"></div>
+    <div id="tab-list" class="detail"></div>
+    <div class="actions">
+      <button id="btn-group" class="btn primary">按分类自动分组</button>
+      <button id="btn-close-dup" class="btn warn">关闭重复标签页</button>
+      <button id="btn-ungroup" class="btn">取消分组</button>
+      <button id="btn-reload-tabs" class="btn">刷新</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  书签整理会创建「AI分类整理」文件夹并归类，不删除 · 标签页分组可一键取消
+</footer>
+
+<script src="classify.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
