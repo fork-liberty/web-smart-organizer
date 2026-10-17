@@ -14,6 +14,14 @@
   </div>
 </header>
 
+<div class="search-bar">
+  <input type="text" id="search-input" placeholder="搜索书签 / 标签页…">
+  <select id="search-mode">
+    <option value="title">标题</option>
+    <option value="url">网址</option>
+  </select>
+</div>
+
 <main>
   <!-- 书签视图 -->
   <section id="view-bookmarks" class="view active">
@@ -37,14 +45,46 @@
       <button id="btn-ungroup" class="btn">取消分组</button>
       <button id="btn-reload-tabs" class="btn">刷新</button>
     </div>
+    <div class="snap-section">
+      <div class="snap-head">
+        <span class="snap-title">标签页快照</span>
+        <span class="snap-hint">每 30 分钟自动保存当前打开的标签页，关闭浏览器也不丢</span>
+        <button id="btn-save-snap" class="btn small">立即保存</button>
+      </div>
+      <div id="snap-list" class="snap-list"></div>
+    </div>
   </section>
 </main>
+
+<section id="ai-settings" class="ai-settings">
+  <div class="ai-head">
+    <span class="ai-title">AI 复审分类（可选增强）</span>
+    <label class="ai-toggle">
+      <input type="checkbox" id="ai-enabled"> 启用
+    </label>
+    <button id="btn-ai-test" class="btn small">测试连接</button>
+  </div>
+  <div class="ai-row">
+    <input type="text" id="ai-baseurl" placeholder="API 地址（默认 DeepSeek：https://api.deepseek.com/v1）">
+  </div>
+  <div class="ai-row">
+    <input type="password" id="ai-key" placeholder="API Key（KeepKey 发放的 sk-... 或 ark_...）" autocomplete="off">
+  </div>
+  <div class="ai-row">
+    <input type="text" id="ai-model" placeholder="模型名，默认 deepseek-chat">
+    <input type="number" id="ai-threshold" min="1" max="12" step="1" placeholder="阈值 4">
+    <button id="btn-ai-save" class="btn small">保存设置</button>
+  </div>
+  <div id="ai-status" class="status"></div>
+  <div class="ai-hint">只把规则拿不准的条目（分数低于阈值 / 归入"其他" / 搜索词未识别）发给 AI 判断；无 Key 或额度用尽时自动退回本地规则，分类永不失效。仅发送标题+网址+搜索词，不发送网页正文。</div>
+</section>
 
 <footer>
   书签整理会创建「AI分类整理」文件夹并归类，不删除 · 标签页分组可一键取消
 </footer>
 
 <script src="classify.js"></script>
+<script src="ai_classify.js"></script>
 <script src="popup.js"></script>
 </body>
 </html>

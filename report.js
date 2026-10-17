@@ -31,10 +31,12 @@ async function init() {
     "</table>";
 
   // 明细
-  const dupTotal = reportItems.filter((it) => it.dup && !it.keep).length;
+  const dupTotal = reportItems.filter((it) => it.dupStrong && !it.keep).length;
+  const weakTotal = reportItems.filter((it) => it.dupWeak).length;
   $("summary").textContent =
     "共 " + reportItems.length + " 个书签 · 重复可清理 " + dupTotal +
-    " 个 · 原始书签不删除 · 规则引擎：本地离线";
+    (weakTotal ? " · 疑似重复 " + weakTotal + " 条需人工确认" : "") +
+    " · 原始书签不删除 · 规则引擎：本地离线";
 
   const rows = reportItems.map((it) => {
     const risk = it.cls.risks.length
@@ -47,11 +49,13 @@ async function init() {
       .map((p) => '<span class="tag">' + escapeHtml(p) + "</span>")
       .join("");
     const ev = it.cls.evidence.length ? escapeHtml(it.cls.evidence.join("、")) : "—";
-    const dup = it.dup
-      ? (it.keep
-          ? '<span class="dup" style="color:#1a7f37">重复×' + it.dupTotal + "·保留</span>"
-          : '<span class="dup" style="color:#d1242f">重复×' + it.dupTotal + "·可清理</span>")
-      : "—";
+    const dup = it.dupWeak
+      ? '<span class="dup" style="color:#8a6d00">疑似重复×' + it.dupTotal + "·需确认</span>"
+      : (it.dup
+          ? (it.keep
+              ? '<span class="dup" style="color:#1a7f37">重复×' + it.dupTotal + "·保留</span>"
+              : '<span class="dup" style="color:#d1242f">重复×' + it.dupTotal + "·可清理</span>")
+          : "—");
     return (
       "<tr><td>" + escapeHtml(it.folder || "（根）") + "</td>" +
       "<td>" + escapeHtml(it.title) + "</td>" +

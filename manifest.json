@@ -1,9 +1,13 @@
 {
   "manifest_version": 3,
   "name": "网页智能整理",
-  "version": "1.0.0",
-  "description": "一键读取书签和标签页，自动分类、自动分组着色；不删除、不修改任何书签。",
-  "permissions": ["bookmarks", "tabs", "tabGroups", "storage"],
+  "version": "2.1.0",
+  "description": "一键读取书签和标签页，自动分类、自动分组着色；可选 AI 复审让分类更准（支持任意 OpenAI 兼容 API）；定期保存标签页快照可恢复；不删除、不修改任何书签。",
+  "permissions": ["bookmarks", "tabs", "tabGroups", "storage", "alarms"],
+  "host_permissions": ["https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_title": "网页智能整理"
